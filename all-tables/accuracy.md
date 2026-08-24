@@ -1,0 +1,3 @@
+# Accuracy
+
+Accuracy in meters.

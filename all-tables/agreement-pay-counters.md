@@ -1,0 +1,50 @@
+# Agreement Pay Counters
+
+Pay Counters are created in order to support the payment calculation in the organization.
+
+Based on the time collected on each Time Counter, records are created as Pay Counters, and these data are finally used to generate the needed information to the payroll system.
+
+[Calculation ID](./calculation-id-10.md)  
+[Agreement](./agreement-5.md)  
+[Pay Counter](./pay-counter-2.md)  
+[Description](./description-11.md)  
+[Time Counter](./time-counter-3.md)  
+[Period](./period-4.md)  
+[Sum](./sum.md)  
+[Offset](./offset-2.md)  
+[Monday](./monday.md)  
+[Tuesday](./tuesday.md)  
+[Wednesday](./wednesday.md)  
+[Thursday](./thursday.md)  
+[Friday](./friday.md)  
+[Saturday](./saturday.md)  
+[Sunday](./sunday.md)  
+[Time Day Offset](./time-day-offset.md)  
+[From Time](./from-time-3.md)  
+[To Time](./to-time-3.md)  
+[From Date](./from-date-4.md)  
+[To Date](./to-date-4.md)  
+[Seniority From](./seniority-from.md)  
+[Seniority To](./seniority-to.md)  
+[Age from](./age-from.md)  
+[Age to](./age-to.md)  
+[Qualification Code](./qualification-code.md)  
+[Job Id](./job-id-3.md)  
+[Rate Type](./rate-type-2.md)  
+[Work Type](./work-type.md)  
+[Job Task No. (Filter)](./job-task-no-filter.md)  
+[Work Type (filter)](./work-type-filter.md)  
+[Qualification Code (filter)](./qualification-code-filter.md)  
+[Job Id (filter)](./job-id-filter.md)  
+[Test Constant](./test-constant.md)  
+[Machine Center (filter)](./machine-center-filter.md)  
+[Work Center No. (filter)](./work-center-no-filter.md)  
+[Resource No. (filter)](./resource-no-filter.md)  
+[Resource Group No. (filter)](./resource-group-no-filter.md)  
+[Job Description](./job-description-2.md)  
+[Activity](./activity-4.md)  
+
+## See also
+
+[Employee Setup](../general-setup/employee-setup.md)  
+[Create Pay Transactions](../daily-use/create-pay-transactions.md)

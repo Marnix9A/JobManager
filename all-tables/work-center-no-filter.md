@@ -1,0 +1,5 @@
+# Work Center No. (filter)
+
+With the selection of a **filter** for _Work Center no._, the counter can be restricted for the selected _Work Center no._
+
+**Read [here](../all-articles/filter-input.md) to learn about the _syntax_ for filters.**

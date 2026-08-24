@@ -1,0 +1,41 @@
+# Calculated lines
+
+This table contains the detail calculation lines as output from the [Time Calculation](../all-pages/time-calculation-and-approval.md).
+
+[Employee](./employee-7.md)  
+[Profile date](./profile-date-3.md)  
+[Time Counter](./time-counter-4.md)  
+[Calculation ID](./calculation-id-12.md)  
+[From Time](./from-time-4.md)  
+[To Time](./to-time-4.md)  
+[Time Comsump](./time-comsump-2.md)  
+[Job Id](./job-id-6.md)  
+[Schedule Type](./schedule-type-5.md)  
+[UTC offset](./utc-offset-2.md)  
+[Require Attendance](./require-attendance.md)  
+[Not Present](./not-present.md)  
+[Time Schedule](./time-schedule-7.md)  
+[Shift](./shift-6.md)  
+[Work Type](./work-type-3.md)  
+[Rate Type](./rate-type-4.md)  
+[Function Type](./function-type.md)  
+[Manual adjustment](../other-features/manual-adjustment.md)  
+[Pay Type for Adjustment](../other-features/pay-type-for-adjustment.md)  
+[Pay Type Qty](./pay-type-qty.md)  
+[Posted](./posted.md)  
+[Hide](./hide.md)  
+[Comment](./comment-2.md)  
+[Posted Reference Sequence](./posted-reference-sequence.md)  
+[Settle Reference Sequence](./settle-reference-sequence.md)  
+[Posted](./posted-2.md)  
+[Posted Document No.](./posted-document-no.md)  
+[Posted Unit Cost](./posted-unit-cost.md)  
+[Posted Pay Type](./posted-pay-type.md)  
+[Created Date-Time](./created-date-time-2.md)  
+[Created By User Name](./created-by-user-name-2.md)  
+
+## See also
+
+[Registration approval](../daily-use/registration-approval.md)  
+[Time Calculation and Approval](../all-pages/time-calculation-and-approval.md)  
+[Adjust Time Counter](../other-features/adjust-time-counter.md)

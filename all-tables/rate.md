@@ -1,0 +1,3 @@
+# Rate
+
+Enter the rate.

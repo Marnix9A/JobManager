@@ -1,0 +1,3 @@
+# Next Operation No.
+
+Viser værdien af feltet **Prod.ordrerutelinje** i tabellen **Prod.ordrerutelinje**.
