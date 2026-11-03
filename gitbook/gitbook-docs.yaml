@@ -1,0 +1,11 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Raptor Document Warehouse
+  structure:
+    - type: space
+      key: space-1
+      title: Raptor Document Warehouse
+      path: 9a-document-management
+      default: true
+      content:
+        directory: ./9a-document-management
