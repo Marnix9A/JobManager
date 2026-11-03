@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "e9d9fae2-c5c5-49a5-8d34-3a42fe45792f",
+		"name": "Raptor API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.text();\r",
+							"pm.environment.set('token', response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/user/getusertoken?externalSystemId={{externalSystemId}}&secret={{externalSystemSecret}}&externalUserName={{externalUserName}}",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"getusertoken"
+					],
+					"query": [
+						{
+							"key": "externalSystemId",
+							"value": "{{externalSystemId}}"
+						},
+						{
+							"key": "secret",
+							"value": "{{externalSystemSecret}}"
+						},
+						{
+							"key": "externalUserName",
+							"value": "{{externalUserName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('documentId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/Marnixhp/OneDrive - 9altitudes/Desktop/Test Docs/dummy.pdf"
+					}
+				},
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/content?name=dummy.pdf",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"content"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "dummy.pdf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download document",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/{{documentId}}/content",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"{{documentId}}",
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resolve a sample Customer tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('tagId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"source\": \"D365-FO\",\r\n  \"entityName\": \"CUSTCUSTOMERV3ENTITY\",\r\n  \"legalEntity\": \"DAT\",\r\n  \"fields\": {\r\n    \"CUSTOMERACCOUNT\": \"C-0000001\",\r\n    \"ORGANIZATIONNAME\": \"Sample Customer\",\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/integration/resolvecontext",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"integration",
+						"resolvecontext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get or create a tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('tagId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"SampleTags\\\\SampleTag1\",\r\n    \"labels\": [\r\n        {\r\n        \"languageId\": 1033,\r\n        \"value\": \"Sample Tag 1\"\r\n        }\r\n    ],\r\n    \"parentTagId\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/taxonomy/tags?method=get-or-create",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"taxonomy",
+						"tags"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "get-or-create"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a tag to a document",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/{{documentId}}/tag/{{tagId}}",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"{{documentId}}",
+						"tag",
+						"{{tagId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the comment field by code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('commentFieldId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/taxonomy/fields/field?code=Fields\\R2B\\Comment",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"taxonomy",
+						"fields",
+						"field"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "Fields\\R2B\\Comment"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a field to a document",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"{{commentFieldId}}\",\r\n  \"value\": \"This is a comment.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/{{documentId}}/field",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"{{documentId}}",
+						"field"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a field on a document",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"{{commentFieldId}}\",\r\n  \"value\": \"This is a comment, but updated.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/{{documentId}}/field",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"{{documentId}}",
+						"field"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Sales Order template by code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('salesOrderTemplateId', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/taxonomy/templates/template?code=Templates\\R2B\\SalesOrder",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"taxonomy",
+						"templates",
+						"template"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "Templates\\R2B\\SalesOrder"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a template to a document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/meta/document/{{documentId}}/template/{{salesOrderTemplateId}}",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"meta",
+						"document",
+						"{{documentId}}",
+						"template",
+						"{{salesOrderTemplateId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the document's thumbnail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "exa-auth-plugin",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{apiGatewayUrl}}/api/render/thumbnail/{{documentId}}",
+					"host": [
+						"{{apiGatewayUrl}}"
+					],
+					"path": [
+						"api",
+						"render",
+						"thumbnail",
+						"{{documentId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
